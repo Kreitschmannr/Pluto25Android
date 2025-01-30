@@ -31,7 +31,7 @@ import java.util.Map;
 public class PostActivity extends AppCompatActivity
 implements View.OnClickListener{
     private static final String TAG = "xxx PostActivity";
-
+    //Declare
     EditText mEditTextTitle;
     EditText mEditTextText;
     Button mButtonPost;
@@ -50,14 +50,14 @@ implements View.OnClickListener{
         });
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+        //init
         mButtonPost = findViewById( R.id.postButtonPost);
         mEditTextText = findViewById( R.id.postEditTextText);
         mEditTextTitle = findViewById( R.id.postEditTextTitle);
 
         mAuth = FirebaseAuth.getInstance();
         mDb = FirebaseFirestore.getInstance();
-
+        //create listeners for buttons
         mButtonPost.setOnClickListener( this );
     }
 
@@ -77,15 +77,20 @@ implements View.OnClickListener{
             doPost();
         }
     }
-
+//TODO remove title or add check
     private void doPost() {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             return; // This should never happen
         }
+        if(mEditTextText.getText().toString().isBlank()){
+            Toast.makeText(getApplicationContext(), "Post body cannot be empty!", Toast.LENGTH_LONG).show();
+            return;
+        }
         Map<String, Object> postMap = new HashMap<>();
         postMap.put("uid", user.getUid());
         postMap.put("email", user.getEmail());
+        //TODO remove title
         postMap.put("title", mEditTextTitle.getText().toString());
         postMap.put("body", mEditTextText.getText().toString());
         postMap.put("createdAt", FieldValue.serverTimestamp());

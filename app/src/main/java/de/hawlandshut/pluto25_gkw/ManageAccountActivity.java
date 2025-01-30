@@ -77,7 +77,7 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
         if (user == null) {
             finish(); // This should never happen.
         }
-
+//TODO make it able to get translated use:String#format
         mTextViewLineEmail.setText("Email :" + user.getEmail());
         mTextViewLineId.setText("User Id : " + user.getUid());
         if (user.isEmailVerified()) {
@@ -97,7 +97,7 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
         }
         return super.onOptionsItemSelected(item);
     }
-
+//TODO make switch case
     @Override
     public void onClick(View view) {
         int i = view.getId();
@@ -153,7 +153,7 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
 
         String email = user.getEmail();
         String password = mEditTextPassword.getText().toString();
-        // Validations für password (Übung!)
+        //TODO check password!
         AuthCredential credential = EmailAuthProvider.getCredential(email, password);
         user.reauthenticate( credential).addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {

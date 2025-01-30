@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
             }
         };
-        // Step 3: Link listener qwith query and return the listenerRegistration
+        // Step 3: Link listener with query and return the listenerRegistration
         return query.addSnapshotListener(listener);
     };
 
@@ -314,7 +314,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // TODO: Code noch rausnehmen!
+    // TODO:Remove for prod Code for debug
+    /*
     @Override
     protected void onResume() {
         super.onResume();
@@ -344,4 +345,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
     }
+    */
 }
