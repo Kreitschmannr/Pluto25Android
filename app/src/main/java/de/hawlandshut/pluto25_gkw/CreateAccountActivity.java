@@ -81,7 +81,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password2 = mEditTextPassword2.getText().toString();
 
         // Check if any field is empty
-        if (email.isEmpty() || password1.isEmpty() || password2.isEmpty()) {
+        if (email.isBlank() || password1.isBlank() || password2.isBlank()) {
             Toast.makeText(getApplicationContext(),
                     "Please fill in all fields.",
                     Toast.LENGTH_LONG).show();

@@ -123,7 +123,21 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         String email, password;
         email = mEditTextMail.getText().toString();
         password = mEditTextPassword.getText().toString();
-        // Add validations! (Exercise)
+        // Add validations!
+        // Check if email or password is blank
+        if (email.isBlank()) {
+            Toast.makeText(getApplicationContext(),
+                    "Email cannot be empty.",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (password.isBlank()) {
+            Toast.makeText(getApplicationContext(),
+                    "Password cannot be empty.",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this,
                         new OnCompleteListener<AuthResult>() {
